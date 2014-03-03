@@ -11,7 +11,7 @@ for line in f:
     if i <= 2:    
         i += 1
     else:
-        sline = line.split(',')
+        sline = line.split(';')
         datos_paro = DatosParo()
         datos_paro.ano = int(sline[0])
         datos_paro.trimestre = int(sline[1])
