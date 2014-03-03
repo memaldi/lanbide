@@ -42,7 +42,8 @@ for line in f:
             municipio.save()
         
         datos_paro.municipio = municipio
-        datos_paro.poblacion_total = int(sline[10])
+
+        datos_paro.poblacion_total = int(float(sline[10].replace(',', '.')))
         datos_paro.poblacion_activa = int(sline[11])
         datos_paro.parados = int(sline[12])
         datos_paro.save()
