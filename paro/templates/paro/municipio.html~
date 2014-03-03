@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Año', 'Paro (%)'],
+          {% for dato in lista_datos %}
+            ['{{dato.0}}-Q{{dato.1}}', {{dato.2}}],
+          {% endfor %}
+          //['2004',  1000,      400],
+          //['2005',  1170,      460],
+          //['2006',  660,       1120],
+          //['2007',  1030,      540]
+        ]);
+
+        var options = {
+          title: 'Paro trimestral',
+          vAxis: {title: 'Paro (%)',  titleTextStyle: {color: 'red'}, maxValue: 100, minValue: 0}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    
+        {{dato.0}} {{dato.1}} {{dato.2}}
+    
+    <div id="chart_div" style="width: 1200px; height: 500px;"></div>
+  </body>
+</html>

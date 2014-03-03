@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Sample Euskadi GeoChart</title>
+    <meta content="">
+    <script src="static/geochart-euskadi/js/euskadi_gc.js"></script>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script type='text/javascript'>
+      google.load('visualization', '1');
+      google.setOnLoadCallback(drawRegionsMap);
+      
+      function drawRegionsMap() {
+	  $("#svgmap").html("<p>Loading content...</p>");
+
+	  var data = google.visualization.arrayToDataTable([
+	      /*['Province', 'Population', 'Density'],
+	      ['Bizkaia', 1155241, 521.32],
+	      ['Gipuzkoa', 714360, 374.21],
+	      ['Araba', 321417, 105.82]*/
+	      //To check an example for municipalities:
+	      ['Municipality', 'Paro (%)',],
+	      {% for municipio in lista_municipios %}
+	        {% if municipio.1 != ' Ziortza-Bolibar' and municipio.1 != 'ELBURGO/BURGELU' and municipio.1 != 'BAÑOS DE EBRO/MAÑUETA' and municipio.1 != 'VILLABUENA DE ALAVA/ESKUER' and municipio.1 != 'MARURI/JATABE' and municipio.1 != 'ELVILLAR/BILAR' and municipio.1 != 'SAN MILLAN/DONEMILIAGA' and municipio.1 != 'AYALA/AIARA' and municipio.1 != 'RIBERA BAJA/ERRIBERA BEITI' and not '/' in municipio.1 and municipio.1 != 'ETXEBARRI, ANT. DE S. EST.' %}
+	            ['{{municipio.1}}', {{municipio.2}}],
+            {% endif %}
+	      {% endfor %}
+	      /*['Bilbao', 349356],
+	      ['Donostia', 186500],
+	      ['Vitoria-Gasteiz', 241386]*/
+	  ]);
+
+	  var options = {
+	      title:'Euskadi',
+	      //width:650,
+	      //height:400,
+	      region:'ES-PV',
+	      // Implemented resolutions: 'municipality', 'comarcas' and 'provinces'
+	      resolution:'municipality',
+	      labels:false,
+	      colorAxis: {colors: ['#d7a12c', '#702f05']}
+	  };
+
+	  loadMap(data, options);
+      }
+    </script>
+    
+    <style></style>
+  </head>
+  <body>
+  {% for municipio in lista_municipios %}
+	        ['{{municipio.1}}', {{municipio.2}}]
+	      {% endfor %}
+  <div id="svgmap" />
+  </body>
+</html>
