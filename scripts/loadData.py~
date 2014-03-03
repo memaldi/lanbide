@@ -250,7 +250,7 @@ for line in f:
         datos_estudios.datos_paro = datos_paro
         datos_estudios.save()
         
-        print 'Procesada(s) %s filas' % count
+        print 'Procesada(s) %s fila(s)' % count
         count += 1
 
 f.close()
