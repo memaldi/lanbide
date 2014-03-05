@@ -20,7 +20,7 @@ for line in f:
         except:
             provincia = Provincia()
             provincia.codigo = int(sline[2].replace('\'', ''))
-            provincia.name = sline[3]
+            provincia.nombre = sline[3]
             provincia.save()
         
         try:
@@ -42,8 +42,8 @@ for line in f:
             municipio.save()
         
         datos_paro.municipio = municipio
-        datos_paro.poblacion_total = int(float(sline[10].replace(',', '.')))
-        datos_paro.poblacion_activa = int(sline[11])
+        datos_paro.poblacion_total = sline[10]
+        datos_paro.poblacion_activa = int(float(sline[11].replace(',', '.'))
         datos_paro.parados = int(sline[12])
         datos_paro.save()
         
