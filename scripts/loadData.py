@@ -43,10 +43,10 @@ for line in f:
         
         datos_paro.municipio = municipio
         datos_paro.poblacion_total = sline[10]
-        datos_paro.poblacion_activa = int(float(sline[11].replace(',', '.'))
+        datos_paro.poblacion_activa = int(float(sline[11].replace(',', '.')))
         datos_paro.parados = int(sline[12])
         datos_paro.save()
-        
+
         # Hombres
         datos_edad = DatosEdad()
         datos_edad.edad = DatosEdad._20
