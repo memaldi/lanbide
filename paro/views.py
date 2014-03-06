@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from paro.models import Municipio, Provincia
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -26,7 +27,7 @@ def mapa(request):
     context['lista_municipios'] = lista_municipios
     return render(request, 'paro/mapa.html', context)
 
-def provincias(request):
+def _calcularParoAnual(ano=2013):
     provincias = Provincia.objects.all()
     context = {}
     for provincia in provincias:
@@ -36,12 +37,26 @@ def provincias(request):
         for comarca in comarcas:
             municipios = comarca.municipio_set.all()
             for municipio in municipios:
-                datos_paro = municipio.datosparo_set.get(ano=2013, trimestre=4)
-                poblacion_activa += datos_paro.poblacion_activa
-                parados += datos_paro.parados
+                try:
+                    datos_paro = municipio.datosparo_set.get(ano=ano, trimestre=4)
+                    poblacion_activa += datos_paro.poblacion_activa
+                    parados += datos_paro.parados
+                except:
+                    pass
         porcentaje_paro = round(float(parados) / poblacion_activa * 100, 2)
         print provincia.nombre
         print poblacion_activa, parados
         context[provincia.nombre] = porcentaje_paro
-    print context
-    return render(request, 'paro/provincias.html', context)
+    return context
+
+def provincias(request):
+    if request.POST:
+        print request.POST['ano']
+        context = _calcularParoAnual(ano=int(request.POST['ano']))
+        response = '{"bizkaia": %s, "gipuzkoa": %s, "araba": %s}' % (context['BIZKAIA'], context['GIPUZKOA'], context['ARABA'])
+        print response
+        return HttpResponse(response)
+    else:
+        context = _calcularParoAnual()
+        print context
+        return render(request, 'paro/provincias.html', context)
