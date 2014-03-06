@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^municipio/([\w-]+)$', views.infoMunicipio),	
     url(r'^mapa', views.mapa),
+    url(r'^provincias', views.provincias),
 )

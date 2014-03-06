@@ -1,3 +1,5 @@
+{% load replace %}
+
 <html>
   <head>
     <title>Sample Euskadi GeoChart</title>
@@ -22,9 +24,8 @@
 	      //To check an example for municipalities:
 	      ['Municipality', 'Paro (%)',],
 	      {% for municipio in lista_municipios %}
-	        {% if municipio.1 != ' Ziortza-Bolibar' and municipio.1 != 'ELBURGO/BURGELU' and municipio.1 != 'BAÑOS DE EBRO/MAÑUETA' and municipio.1 != 'VILLABUENA DE ALAVA/ESKUER' and municipio.1 != 'MARURI/JATABE' and municipio.1 != 'ELVILLAR/BILAR' and municipio.1 != 'SAN MILLAN/DONEMILIAGA' and municipio.1 != 'AYALA/AIARA' and municipio.1 != 'RIBERA BAJA/ERRIBERA BEITI' and not '/' in municipio.1 and municipio.1 != 'ETXEBARRI, ANT. DE S. EST.' %}
-	            ['{{municipio.1}}', {{municipio.2}}],
-            {% endif %}
+	        {% if municipio.1 != 'ETXEBARRI, ANT. DE S. EST.' %}
+	        ['{{municipio.1.split|join:"_"|replace:"/"}}', {{municipio.2}}],
 	      {% endfor %}
 	      /*['Bilbao', 349356],
 	      ['Donostia', 186500],
@@ -49,9 +50,6 @@
     <style></style>
   </head>
   <body>
-  {% for municipio in lista_municipios %}
-	        ['{{municipio.1}}', {{municipio.2}}]
-	      {% endfor %}
   <div id="svgmap" />
   </body>
 </html>
