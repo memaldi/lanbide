@@ -14,10 +14,7 @@
       body {
         padding-top: 50px;
       }
-      .starter-template {
-        padding: 40px 15px;
-        text-align: center;
-      }
+
     </style>
 
     <script type='text/javascript'>
@@ -116,7 +113,7 @@
       var bizkaia = {{BIZKAIA}};
       var gipuzkoa = {{GIPUZKOA}};
       var araba = {{ARABA}};
-      google.load('visualization', '1');
+      google.load('visualization', '1', {packages:["corechart"]});
       google.setOnLoadCallback(drawRegionsMap);
       $(function() {
 
@@ -161,6 +158,24 @@
 
       function drawRegionsMap() {
 	  //$("#svgmap").html("<p>Loading content...</p>");
+
+        var dataChart = google.visualization.arrayToDataTable([
+          ['Año-Trimestre', 'Araba', 'Bizkaia', 'Gipuzkoa'],
+          {% for key, value in data.items %}
+            ['{{key.0}} - T{{key.1}}', {{value.ARABA}}, {{value.BIZKAIA}}, {{value.GIPUZKOA}}],
+          {% endfor %}
+        ]);
+
+        var optionsChart = {
+          title: 'Paro (%)',
+          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0},
+          colors: ['red', 'green', 'blue'],
+          legend: {position: 'bottom'}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(dataChart, optionsChart);
 
         var data = google.visualization.arrayToDataTable([
     	      ['Province', 'Paro (%)'],
@@ -211,13 +226,16 @@
 
     <div class="container">
 
-      <div class="starter-template">
         <h1>Distribución del paro por provincias</h1>
-        <h2 id="titulo-ano">Año 2013 - Cuarto trimestre</h2>
-        <div id="slider"></div>
-        <br />
-        <div id="svgmap"></div>
-      </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+          <div id="chart_div" style="width: 900px; height: 500px;"></div>
+          <h2 id="titulo-ano">Año 2013 - Cuarto trimestre</h2>
+          <div id="slider"></div>
+          <br />
+          <div id="svgmap"></div>
+        </div>
+        <div class="col-md-1"></div>
 
     </div>
   </body>
