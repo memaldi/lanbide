@@ -8,6 +8,18 @@
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="/static/jquery/jquery.cookie.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+      body {
+        padding-top: 50px;
+      }
+      .starter-template {
+        padding: 40px 15px;
+        text-align: center;
+      }
+    </style>
+
     <script type='text/javascript'>
 
       function csrfSafeMethod(method) {
@@ -39,7 +51,7 @@
         $( "#slider" ).slider({
           value: 2013,
           stop: function( event, ui ) {
-            $( "#amount" ).val( ui.value);
+            $( "#titulo-ano" ).html( "Año " + ui.value);
             var csrftoken = $.cookie('csrftoken');
             $.ajaxSetup({
               beforeSend: function(xhr, settings) {
@@ -101,8 +113,37 @@
     <style></style>
   </head>
   <body>
-    <div id="svgmap"></div>
-    <div id="slider"></div>
-    <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" value="2013">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Distribución del paro por provincias</h1>
+        <h2 id="titulo-ano">Año 2013</h2>
+        <div id="slider"></div>
+        <br />
+        <div id="svgmap"></div>
+      </div>
+
+    </div>
   </body>
 </html>
