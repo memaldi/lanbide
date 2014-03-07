@@ -22,6 +22,78 @@
 
     <script type='text/javascript'>
 
+      steps = [
+        ["Año 1997 - Primer trimestre", "{\"ano\": 1997, \"trimestre\": 1}"],
+        ["Año 1997 - Segundo trimestre", "{\"ano\": 1997, \"trimestre\": 2}"],
+        ["Año 1997 - Tercer trimestre", "{\"ano\": 1997, \"trimestre\": 3}"],
+        ["Año 1997 - Cuarto trimestre", "{\"ano\": 1997, \"trimestre\": 4}"],
+        ["Año 1998 - Primer trimestre", "{\"ano\": 1998, \"trimestre\": 1}"],
+        ["Año 1998 - Segundo trimestre", "{\"ano\": 1998, \"trimestre\": 2}"],
+        ["Año 1998 - Tercer trimestre", "{\"ano\": 1998, \"trimestre\": 3}"],
+        ["Año 1998 - Cuarto trimestre", "{\"ano\": 1998, \"trimestre\": 4}"],
+        ["Año 1999 - Primer trimestre", "{\"ano\": 1999, \"trimestre\": 1}"],
+        ["Año 1999 - Segundo trimestre", "{\"ano\": 1999, \"trimestre\": 2}"],
+        ["Año 1999 - Tercer trimestre", "{\"ano\": 1999, \"trimestre\": 3}"],
+        ["Año 1999 - Cuarto trimestre", "{\"ano\": 1999, \"trimestre\": 4}"],
+        ["Año 2000 - Primer trimestre", "{\"ano\": 2000, \"trimestre\": 1}"],
+        ["Año 2000 - Segundo trimestre", "{\"ano\": 2000, \"trimestre\": 2}"],
+        ["Año 2000 - Tercer trimestre", "{\"ano\": 2000, \"trimestre\": 3}"],
+        ["Año 2000 - Cuarto trimestre", "{\"ano\": 2000, \"trimestre\": 4}"],
+        ["Año 2001 - Primer trimestre", "{\"ano\": 2001, \"trimestre\": 1}"],
+        ["Año 2001 - Segundo trimestre", "{\"ano\": 2001, \"trimestre\": 2}"],
+        ["Año 2001 - Tercer trimestre", "{\"ano\": 2001, \"trimestre\": 3}"],
+        ["Año 2001 - Cuarto trimestre", "{\"ano\": 2001, \"trimestre\": 4}"],
+        ["Año 2002 - Primer trimestre", "{\"ano\": 2002, \"trimestre\": 1}"],
+        ["Año 2002 - Segundo trimestre", "{\"ano\": 2002, \"trimestre\": 2}"],
+        ["Año 2002 - Tercer trimestre", "{\"ano\": 2002, \"trimestre\": 3}"],
+        ["Año 2002 - Cuarto trimestre", "{\"ano\": 2002, \"trimestre\": 4}"],
+        ["Año 2003 - Primer trimestre", "{\"ano\": 2003, \"trimestre\": 1}"],
+        ["Año 2003 - Segundo trimestre", "{\"ano\": 2003, \"trimestre\": 2}"],
+        ["Año 2003 - Tercer trimestre", "{\"ano\": 2003, \"trimestre\": 3}"],
+        ["Año 2003 - Cuarto trimestre", "{\"ano\": 2003, \"trimestre\": 4}"],
+        ["Año 2004 - Primer trimestre", "{\"ano\": 2004, \"trimestre\": 1}"],
+        ["Año 2004 - Segundo trimestre", "{\"ano\": 2004, \"trimestre\": 2}"],
+        ["Año 2004 - Tercer trimestre", "{\"ano\": 2004, \"trimestre\": 3}"],
+        ["Año 2004 - Cuarto trimestre", "{\"ano\": 2004, \"trimestre\": 4}"],
+        ["Año 2005 - Primer trimestre", "{\"ano\": 2005, \"trimestre\": 1}"],
+        ["Año 2005 - Segundo trimestre", "{\"ano\": 2005, \"trimestre\": 2}"],
+        ["Año 2005 - Tercer trimestre", "{\"ano\": 2005, \"trimestre\": 3}"],
+        ["Año 2005 - Cuarto trimestre", "{\"ano\": 2005, \"trimestre\": 4}"],
+        ["Año 2006 - Primer trimestre", "{\"ano\": 2006, \"trimestre\": 1}"],
+        ["Año 2006 - Segundo trimestre", "{\"ano\": 2006, \"trimestre\": 2}"],
+        ["Año 2006 - Tercer trimestre", "{\"ano\": 2006, \"trimestre\": 3}"],
+        ["Año 2006 - Cuarto trimestre", "{\"ano\": 2006, \"trimestre\": 4}"],
+        ["Año 2007 - Primer trimestre", "{\"ano\": 2007, \"trimestre\": 1}"],
+        ["Año 2007 - Segundo trimestre", "{\"ano\": 2007, \"trimestre\": 2}"],
+        ["Año 2007 - Tercer trimestre", "{\"ano\": 2007, \"trimestre\": 3}"],
+        ["Año 2007 - Cuarto trimestre", "{\"ano\": 2007, \"trimestre\": 4}"],
+        ["Año 2008 - Primer trimestre", "{\"ano\": 2008, \"trimestre\": 1}"],
+        ["Año 2008 - Segundo trimestre", "{\"ano\": 2008, \"trimestre\": 2}"],
+        ["Año 2008 - Tercer trimestre", "{\"ano\": 2008, \"trimestre\": 3}"],
+        ["Año 2008 - Cuarto trimestre", "{\"ano\": 2008, \"trimestre\": 4}"],
+        ["Año 2009 - Primer trimestre", "{\"ano\": 2009, \"trimestre\": 1}"],
+        ["Año 2009 - Segundo trimestre", "{\"ano\": 2009, \"trimestre\": 2}"],
+        ["Año 2009 - Tercer trimestre", "{\"ano\": 2009, \"trimestre\": 3}"],
+        ["Año 2009 - Cuarto trimestre", "{\"ano\": 2009, \"trimestre\": 4}"],
+        ["Año 2010 - Primer trimestre", "{\"ano\": 2010, \"trimestre\": 1}"],
+        ["Año 2010 - Segundo trimestre", "{\"ano\": 2010, \"trimestre\": 2}"],
+        ["Año 2010 - Tercer trimestre", "{\"ano\": 2010, \"trimestre\": 3}"],
+        ["Año 2010 - Cuarto trimestre", "{\"ano\": 2010, \"trimestre\": 4}"],
+        ["Año 2011 - Primer trimestre", "{\"ano\": 2011, \"trimestre\": 1}"],
+        ["Año 2011 - Segundo trimestre", "{\"ano\": 2011, \"trimestre\": 2}"],
+        ["Año 2011 - Tercer trimestre", "{\"ano\": 2011, \"trimestre\": 3}"],
+        ["Año 2011 - Cuarto trimestre", "{\"ano\": 2011, \"trimestre\": 4}"],
+        ["Año 2012 - Primer trimestre", "{\"ano\": 2012, \"trimestre\": 1}"],
+        ["Año 2012 - Segundo trimestre", "{\"ano\": 2012, \"trimestre\": 2}"],
+        ["Año 2012 - Tercer trimestre", "{\"ano\": 2012, \"trimestre\": 3}"],
+        ["Año 2012 - Cuarto trimestre", "{\"ano\": 2012, \"trimestre\": 4}"],
+        ["Año 2013 - Primer trimestre", "{\"ano\": 2013, \"trimestre\": 1}"],
+        ["Año 2013 - Segundo trimestre", "{\"ano\": 2013, \"trimestre\": 2}"],
+        ["Año 2013 - Tercer trimestre", "{\"ano\": 2013, \"trimestre\": 3}"],
+        ["Año 2013 - Cuarto trimestre", "{\"ano\": 2013, \"trimestre\": 4}"],
+      ];
+
+
       function csrfSafeMethod(method) {
         // these HTTP methods do not require CSRF protection
         return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
@@ -49,9 +121,12 @@
       $(function() {
 
         $( "#slider" ).slider({
-          value: 2013,
+          value: 67,
+          slide: function( event, ui ) {
+            $( "#titulo-ano" ).html( steps[ui.value][0] );
+          },
           stop: function( event, ui ) {
-            $( "#titulo-ano" ).html( "Año " + ui.value);
+            $( "#titulo-ano" ).html( steps[ui.value][0] );
             var csrftoken = $.cookie('csrftoken');
             $.ajaxSetup({
               beforeSend: function(xhr, settings) {
@@ -63,7 +138,7 @@
                 }
               }
             });
-            var posting = $.post("/provincias", {ano: ui.value});
+            var posting = $.post("/provincias", {json: steps[ui.value][1]});
 
             posting.done(function( data ) {
               var json = jQuery.parseJSON(data);
@@ -79,8 +154,8 @@
 
           }
         });
-        $( "#slider" ).slider( "option", "max", 2013 );
-        $( "#slider" ).slider( "option", "min", 1997 );
+        $( "#slider" ).slider( "option", "max", 67 );
+        $( "#slider" ).slider( "option", "min", 0 );
         $( "#slider" ).slider( "option", "step", 1 );
       });
 
@@ -138,7 +213,7 @@
 
       <div class="starter-template">
         <h1>Distribución del paro por provincias</h1>
-        <h2 id="titulo-ano">Año 2013</h2>
+        <h2 id="titulo-ano">Año 2013 - Cuarto trimestre</h2>
         <div id="slider"></div>
         <br />
         <div id="svgmap"></div>
